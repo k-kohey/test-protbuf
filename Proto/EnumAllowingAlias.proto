@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+enum EnumAllowingAlias {
+    option allow_alias = true;
+    EAA_UNSPECIFIED = 0;
+    EAA_STARTED = 1;
+    EAA_RUNNING = 1;
+    EAA_FINISHED = 2;
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "Proto/Result.proto";
+
+enum Corpus {
+    CORPUS_UNSPECIFIED = 0;
+    CORPUS_UNIVARSAL = 1;
+    CORPUS_WEB = 2;
+}
+
+/*
+ * The search service definition.
+ */
+
+message SearchRequest {
+    reserved 9;
+    reserved "deleted_field";
+
+    string query = 1;
+    int32 page_number = 2; // which page number do we want?
+    int32 result_per_page = 3;
+    Corpus corpus = 4;
+    optional string song_name = 5;
+}
+
+message SearchResponse {
+    message Project {
+        string project_name = 1;
+    }
+    repeated Result results = 1;
+    map<string, Project> projects = 2;
+}
